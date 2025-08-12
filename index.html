@@ -7,7 +7,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    bruh
+    <div class="formDiv">
+      <form novalidate id="form">
+        <label for="email">
+          Email:
+          <input type="email" name="email" id="email" required />
+        </label>
+        <label for="country">
+          Country:
+          <select name="country" id="country" required>
+            <option value="USA">USA</option>
+            <option value="CAN">CAN</option>
+          </select>
+        </label>
+        <label for="postal">
+          Postal Code:
+          <input type="text" name="postal" id="postal" required />
+        </label>
+        <label for="pwd">
+          Password:
+          <input type="pwd" name="pwd" id="pwd" required />
+        </label>
+        <label for="confirmPWD">
+          Confirm Password:
+          <input type="confirmPWD" name="confirmPWD" id="confirmPWD" required />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
