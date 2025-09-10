@@ -15,10 +15,13 @@ email.addEventListener("input", (e) => {
 function checkEmail() {
   if (email.checkValidity()) {
     email.setCustomValidity("");
+    email.classList.remove("invalid");
   } else if (email.validity.typeMismatch) {
     email.setCustomValidity("This is not an email. (example@domain.com)");
+    email.classList.add("invalid");
   } else {
     email.setCustomValidity("");
+    email.classList.remove("invalid");
   }
   email.reportValidity();
 }
@@ -32,8 +35,10 @@ function checkCountry() {
     country.setCustomValidity("");
   } else if (country.validity.typeMismatch) {
     country.setCustomValidity("This is not an country.");
+    country.classList.add("invalid");
   } else {
     country.setCustomValidity("");
+    country.classList.remove("invalid");
   }
   country.reportValidity();
 }
@@ -53,11 +58,14 @@ function checkPostal() {
         "postal codes in the US should have a length of 5"
       );
       postal.reportValidity();
+      postal.classList.add("invalid");
     } else if (postal.validity.typeMismatch) {
       postal.setCustomValidity("Numbers only.");
       postal.reportValidity();
+      postal.classList.add("invalid");
     } else {
       postal.setCustomValidity("");
+      postal.classList.remove("invalid");
     }
   } else if (country.value == "CAN") {
     postal.type = "text";
@@ -66,10 +74,12 @@ function checkPostal() {
       postal.setCustomValidity(
         "postal codes in Canada should have a length of 6"
       );
+      postal.classList.add("invalid");
       postal.reportValidity();
     } else {
       postal.setCustomValidity("");
       postal.reportValidity();
+      postal.classList.remove("invalid");
     }
   }
 }
@@ -87,6 +97,9 @@ function checkPassword() {
     password.setCustomValidity("");
   }
   password.reportValidity();
+  if (!password.checkValidity) {
+    password.classList.add("invalid");
+  }
 }
 
 confirmPWD.addEventListener("input", (e) => {
@@ -104,4 +117,7 @@ function confirmPassword() {
     confirmPWD.setCustomValidity("");
   }
   confirmPWD.reportValidity();
+  if (!confirmPWD.checkValidity) {
+    password.classList.add("invalid");
+  }
 }
