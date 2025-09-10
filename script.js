@@ -46,12 +46,18 @@ function checkPostal() {
   if (country.value == "USA") {
     console.log("USA!!");
     postal.type = "number";
+    console.log(postal.value.length);
     if (postal.value.length != 5) {
+      console.log("wrong length!");
       postal.setCustomValidity(
         "postal codes in the US should have a length of 5"
       );
+      postal.reportValidity();
     } else if (postal.validity.typeMismatch) {
       postal.setCustomValidity("Numbers only.");
+      postal.reportValidity();
+    } else {
+      postal.setCustomValidity("");
     }
   } else if (country.value == "CAN") {
     console.log("CANADA!!");
@@ -59,17 +65,12 @@ function checkPostal() {
       postal.setCustomValidity(
         "postal codes in Canada should have a length of 6"
       );
+      postal.reportValidity();
+    } else {
+      postal.setCustomValidity("");
+      postal.reportValidity();
     }
   }
-
-  if (postal.checkValidity()) {
-    postal.setCustomValidity("");
-  } else if (postal.validity.typeMismatch) {
-    postal.setCustomValidity("This is not a postal code.");
-  } else {
-    postal.setCustomValidity("");
-  }
-  postal.reportValidity();
 }
 
 password.addEventListener("input", (e) => {
