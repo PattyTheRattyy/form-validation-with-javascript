@@ -60,6 +60,7 @@ function checkPostal() {
       postal.setCustomValidity("");
     }
   } else if (country.value == "CAN") {
+    postal.type = "text";
     console.log("CANADA!!");
     if (postal.value.length != 6) {
       postal.setCustomValidity(
